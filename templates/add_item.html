@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Add New Item</h1>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.title.label }}<br>{{ form.title(size=32) }}</p>
+    <p>{{ form.genre.label }}<br>{{ form.genre(size=32) }}</p>
+    <p>{{ form.rating.label }}<br>{{ form.rating(size=5) }}</p>
+    <p>{{ form.comment.label }}<br>{{ form.comment(cols=30, rows=4) }}</p>
+    <p>{{ form.submit() }}</p>
+  </form>
+{% endblock %}

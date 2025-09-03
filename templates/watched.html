@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Watched{% endblock %}
+
+{% block content %}
+<h2>Watched Movies/Series</h2>
+<ul class="list-group">
+    {% for item in items %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <strong>{{ item.title }}</strong> ({{ item.genre }}) - {{ item.rating }}
+                <br><small>{{ item.comment }}</small>
+                {% if item.my_rating %}
+                    <br><strong>My Rating:</strong> {{ item.my_rating }}/10
+                {% endif %}
+            </div>
+            <a href="{{ url_for('watchlist.update_watched', item_id=item.id) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+        </li>
+    {% else %}
+        <li class="list-group-item">You haven’t marked anything as watched yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
